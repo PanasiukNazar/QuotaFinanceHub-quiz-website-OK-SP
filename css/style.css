@@ -523,21 +523,19 @@ header h2 {
 
 /* QUIZ STYLES */
 
-.quiz-container {
+#quiz-page {
+    margin: 100px 0px 300px 0px;
 }
 
-.quiz-wrapper {
-    height: 1100px;
-    margin-bottom: 50px;
+@media (max-width: 540px) {
+    #quiz-page {
+        margin: 50px 0px 150px 0px;
+    }
 }
 
 .quiz-content {
     position: relative;
     align-items: center;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     row-gap: 30px;
 }
 

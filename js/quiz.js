@@ -131,14 +131,6 @@ const questionsStep = {
 
                 <h3>${question.label}</h3>
 
-                <div class="buttons-wrapper">
-                    <button class="btn btn-primary py-3 button" ${
-                        questionsStep.questionIndex === 0 ? 'disabled' : ''
-                    } data-action="goToPreviousQuestion">Предыдущий</button>
-
-                    <button class="btn btn-primary py-3 button" data-action="goToNextQuestion">Далее</button>
-                </div>
-        
                 <div class="row answers">
                     ${question.answers
                         .map(
