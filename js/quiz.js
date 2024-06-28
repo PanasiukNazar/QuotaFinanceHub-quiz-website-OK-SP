@@ -195,15 +195,12 @@ const finalStep = {
         <div class="container quiz-wrapper">
             <div class="row quiz-content">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <img class="quiz-img" src="img/quiz-1.jpg">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
                     <h2 class="title">КвотаФинансХаб</h2>
                     <h3>Заполни форму для получения БЕСПЛАТНЫХ Топ-5 эффективных стратегий в криптотрейдинге</h3>
-                    <p>Заполните форму ниже и получите доступ к нашим эксклюзивным материалам, разработанным нашими экспертами. Узнайте о пяти самых эффективных стратегиях, которые помогут вам добиться успеха в мире криптотрейдинга.</p>
                     <form>
                         <input class="form-control" name="name" type="name" placeholder="Имя" required>
                         <input class="form-control" name="email" type="email" placeholder="Email" required>
+                        <input class="form-control" name="phone" type="phone" placeholder="Номер" required>
                         
                         ${Object.keys(quiz.answers)
                             .map(
