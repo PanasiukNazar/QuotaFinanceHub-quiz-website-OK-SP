@@ -103,9 +103,9 @@ const startStep = {
                 </div>
                 <div class="col-lg-6 col-md-6 col-lg-6">
                     <h2 class="title">КвотаФинансХаб</h2>
+                    <button class="btn btn-primary w-50 py-3 first-button" data-action="startQuiz">Начать</button>
                     <h3>КАК СТАТЬ УСПЕШНЫМ ТРЕЙДЕРОМ, УДЕЛЯЯ ВСЕГО 20 МИНУТ В ДЕНЬ?</h3>
                     <h6 style="margin-bottom: 20px">Пройди опрос и получите БЕСПЛАТНО Топ-5 стратегий, которые помогут улучшить торговлю и увеличить доход</h6>
-                    <button class="btn btn-primary w-50 py-3" data-action="startQuiz">Начать</button>
                 </div>
             </div>
         </div>
@@ -130,6 +130,14 @@ const questionsStep = {
             <div class="row quiz-content text-center">
 
                 <h3>${question.label}</h3>
+
+                <div class="buttons-wrapper">
+                    <button class="btn btn-primary py-3 button" ${
+                        questionsStep.questionIndex === 0 ? 'disabled' : ''
+                    } data-action="goToPreviousQuestion">Предыдущий</button>
+
+                    <button class="btn btn-primary py-3 button" data-action="goToNextQuestion">Далее</button>
+                </div>
         
                 <div class="row answers">
                     ${question.answers
@@ -142,14 +150,6 @@ const questionsStep = {
                             `,
                         )
                         .join('')}
-                </div>
-
-                <div class="buttons-wrapper">
-                    <button class="btn btn-primary py-3 button" ${
-                        questionsStep.questionIndex === 0 ? 'disabled' : ''
-                    } data-action="goToPreviousQuestion">Предыдущий</button>
-
-                    <button class="btn btn-primary py-3 button" data-action="goToNextQuestion">Далее</button>
                 </div>
             </div>
         </div>
