@@ -209,7 +209,7 @@ const finalStep = {
                     <h2 class="title">КвотаФинансХаб</h2>
                     <h3>Заполни форму для получения БЕСПЛАТНЫХ Топ-5 эффективных стратегий в криптотрейдинге</h3>
                     <p>Заполните форму ниже и получите доступ к нашим эксклюзивным материалам, разработанным нашими экспертами. Узнайте о пяти самых эффективных стратегиях, которые помогут вам добиться успеха в мире криптотрейдинга.</p>
-                    <form ation="https://www.google.com/" method="GET">
+                    <form>
                         <input class="form-control" name="name" type="name" placeholder="Имя" required>
                         <input class="form-control" name="email" type="email" placeholder="Email" required>
                         
@@ -220,24 +220,34 @@ const finalStep = {
                             )
                             .join('')}
                 
-                        <button id="submit-quiz" class="btn btn-primary w-50 py-3">Submit</button>
+                        <button data-action="submitAnswers" class="btn btn-primary w-50 py-3">Отправить</button>
                     </form>
                 </div>
             </div>
         </div>
       `;
     },
-    onClick: () => {},
+    onClick: (el) => {
+        if (el.getAttribute('data-action') === 'submitAnswers') {
+            localStorage.setItem('quizDone', true);
+            document.getElementById('main-page').classList.remove('hide');
+            document.getElementById('quiz-page').classList.add('hide');
+        }
+    },
 };
 
 const quiz = {
     activeStep: startStep,
     answers: {},
     clear: () => ($container.innerHTML = ''),
-    init: () =>
+    init: () => {
         $container.addEventListener('click', (event) =>
             quiz.activeStep.onClick(event.target),
-        ),
+        );
+        $container.addEventListener('submit', (event) =>
+            event.preventDefault(),
+        );
+    },
     render: () => {
         quiz.clear();
         quiz.activeStep.render();
@@ -249,13 +259,8 @@ const quiz = {
     setAnswers: (answers) => (quiz.answers = answers),
 };
 
-// const submitQuiz = () => {
-//     localStorage.setItem('quizDone', true);
-//     if (localStorage.getItem('quizDone', true)) {
-//         document.getElementById('quiz-page').classList.add('hide');
-//         document.getElementById('main-page').classList.remove('hide');
-//     }
-// };
-
-quiz.init();
-quiz.render();
+if (!localStorage.getItem('quizDone')) {
+    document.getElementById('main-page').classList.add('hide');
+    quiz.init();
+    quiz.render();
+}
